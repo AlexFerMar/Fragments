@@ -22,7 +22,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fContenedorMain"
-        android:name="com.example.fragments.ui.main.MainFragment"
+        android:name="com.example.fragments.ui.main.CamaraFragment"
         android:layout_width="371dp"
         android:layout_height="350dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +35,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fContenedorSecond"
-        android:name="com.example.fragments.ui.main.MainFragment"
+        android:name="com.example.fragments.ui.main.CamaraFragment"
         android:layout_width="361dp"
         android:layout_height="357dp"
         app:layout_constraintBottom_toBottomOf="parent"
