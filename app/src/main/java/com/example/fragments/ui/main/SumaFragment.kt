@@ -7,15 +7,16 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.fragments.R
 
-class SecondFragment : Fragment(), View.OnClickListener {
+class SumaFragment : Fragment(), View.OnClickListener {
 
     companion object {
-        fun newInstance() = SecondFragment()
+        fun newInstance() = SumaFragment()
     }
 
     private lateinit var btComprobar: Button
@@ -37,12 +38,26 @@ class SecondFragment : Fragment(), View.OnClickListener {
             this,
             Observer(
                 fun(cuenta: String) {
-                    tvCuenta.text = cuenta
+                    val tvCuenta = view?.findViewById<TextView>(R.id.tvCuenta)
+                    tvCuenta?.setText(cuenta)
                 }
             )
         )
 
+        //Observacion del cambio de Cuenta
+        viewModel.liveResultado.observe(
+            this,
+            Observer(
+                fun(resultado: String) {
 
+                    val etResultado = view?.findViewById<TextView>(R.id.etResultado)
+                    etResultado?.setText(resultado)
+
+                    viewModel.cambiarCuenta()
+
+                }
+            )
+        )
 
     }
 
@@ -69,7 +84,16 @@ class SecondFragment : Fragment(), View.OnClickListener {
 
         val resultado = etResultado.text.toString()
 
-        viewModel.comprobarResultado(resultado.toInt())
+
+        try {
+            viewModel.comprobarResultado(resultado.toInt())
+        }catch (e :Exception){
+
+            viewModel.comprobarResultado(-1)
+
+        }
+
+
 
 
     }

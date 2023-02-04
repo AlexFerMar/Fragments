@@ -1,6 +1,7 @@
 package com.example.fragments.ui.main
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 
@@ -10,7 +11,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
     private var numero1: Int = numeroAleatorio()
     private var numero2: Int = numeroAleatorio()
     private var cuenta:String="$numero1 + $numero2"
-    private var resulta: String = "Opera para comprobar"
+    private var resulta: String = ""
 
 
 
@@ -52,8 +53,9 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         numero1=numeroAleatorio()
         numero2=numeroAleatorio()
         cuenta="$numero1 + $numero2"
+        Log.d("NUMEROS", cuenta)
 
-        liveCuenta.setValue(cuenta)
+        liveCuenta.value = cuenta
 
 
     }

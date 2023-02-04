@@ -11,10 +11,10 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.fragments.R
 
-class MainFragment : Fragment() {
+class CamaraFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = CamaraFragment()
     }
 
 

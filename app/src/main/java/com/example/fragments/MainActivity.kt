@@ -8,13 +8,10 @@ import android.provider.MediaStore
 import android.view.View
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.FragmentTransaction
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.fragments.ui.main.MainFragment
+import com.example.fragments.ui.main.CamaraFragment
 import com.example.fragments.ui.main.MainViewModel
-import com.example.fragments.ui.main.SecondFragment
-import kotlin.properties.Delegates
+import com.example.fragments.ui.main.SumaFragment
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
@@ -22,8 +19,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var btCalculo: Button
     private lateinit var btCamara: Button
 
-    private val fragment1: MainFragment = MainFragment.newInstance()
-    private val fragment2: SecondFragment = SecondFragment.newInstance()
+    private val fragment1: CamaraFragment = CamaraFragment.newInstance()
+    private val fragment2: SumaFragment = SumaFragment.newInstance()
     private var isLandsacpe = false
 
 
@@ -33,7 +30,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
+        viewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
 
         val orientation = this.resources.configuration.orientation
@@ -55,6 +52,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         btCamara = findViewById(R.id.btCamara)
         btCamara.setOnClickListener(this)
+
 
     }
 
@@ -119,7 +117,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 //Llamamos el intent de la camara
                 val cameraIntent = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
                 startActivityForResult(cameraIntent, CAMARA)
-                if (!isLandsacpe){
+                if (!isLandsacpe) {
 
                     val fragmentTransaction = supportFragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.fContenedorMain, fragment1)
@@ -133,7 +131,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 //Llamamos el intent de la calculadora
                 viewModel.cambiarCuenta()
 
-                if (!isLandsacpe){
+                if (!isLandsacpe) {
 
                     val fragmentTransaction = supportFragmentManager.beginTransaction()
                     fragmentTransaction.replace(R.id.fContenedorMain, fragment2)
