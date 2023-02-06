@@ -56,7 +56,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-
+    /**
+     * Funcion encargada de recoger el result de la activity camara
+     */
     @Deprecated("Deprecated a partir de API 30")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -79,7 +81,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         }
     }
 
-
+    /**
+     * Funcion con las acciones que se activan cuando el telefono esta en horizontal
+     */
     fun landscape() {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()
@@ -93,6 +97,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
+    /**
+     * Funcion con las acciones que se activan cuando el telefono esta en vertical
+     */
     fun portrait() {
 
         val fragmentTransaction = supportFragmentManager.beginTransaction()

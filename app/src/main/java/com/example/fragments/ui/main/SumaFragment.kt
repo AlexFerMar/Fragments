@@ -44,7 +44,7 @@ class SumaFragment : Fragment(), View.OnClickListener {
             )
         )
 
-        //Observacion del cambio de Cuenta
+        //Observacion del cambio de Resultado
         viewModel.liveResultado.observe(
             this,
             Observer(
@@ -80,6 +80,10 @@ class SumaFragment : Fragment(), View.OnClickListener {
         return view
     }
 
+
+    /**
+     * Definimos los clickListener del boton
+     */
     override fun onClick(p0: View?) {
 
         val resultado = etResultado.text.toString()
@@ -88,7 +92,8 @@ class SumaFragment : Fragment(), View.OnClickListener {
         try {
             viewModel.comprobarResultado(resultado.toInt())
         }catch (e :Exception){
-
+            //En caso de que el texto no pueda ser casteado salta este trozo de codigo y devuelve el valor como -1
+            //Como es la suma de dos numeros positivos esto hace que lo de abajo sea equivalente a "false" cuando se compruebe el resultado
             viewModel.comprobarResultado(-1)
 
         }

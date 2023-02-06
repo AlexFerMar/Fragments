@@ -34,7 +34,7 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
 
     /**
      * Funcion que comprueba si el resultado dado por el usuario es correcto
-     * Devuelve un boolean indicando si ha acertado o no
+     * Escribe el resultado en la casilla de texto donde se introduce la respuesta
      */
 
     fun comprobarResultado(resultado: Int) {
@@ -48,6 +48,10 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         liveResultado.value = resulta
     }
 
+
+    /**
+     * Funcion que cambia la cuenta en el fragment de calculo
+     */
     fun cambiarCuenta(){
 
         numero1=numeroAleatorio()

@@ -42,6 +42,9 @@ class CamaraFragment : Fragment() {
     }
 
 
+    /**
+     * Funcion que cambia la foto presente en el primer fragment
+     */
     fun changePhoto(photo: Bitmap?) {
 
         ivFoto.setImageBitmap(photo)
